@@ -1,0 +1,573 @@
+﻿<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <!-- Title of The Page -->
+    <title>Fancy Shopping E-commerce HTML Template</title>
+    <!-- Meta Informations -->
+    <meta charset="utf-8">
+    <meta name="description" content="Bootstrap Responsive  Fancy Shopping E-commerce HTML Template">
+    <meta name="keywords"
+        content="Fancy Shopping E-commerce HTML Template,template,bootstrap 5,ui template kit,envato templates,fancy shopping html templates,html,css">
+    <meta name="author" content="Fancy Shopping E-commerce HTML Template">
+    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.0.2/vue.global.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://demeter.5fpro.com/tw/zipcode-selector.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+    <!-- font awesome cdn link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- custom css file link -->
+    <link rel="stylesheet" href="../mainCss/css/allStyle.css">
+    <link rel="stylesheet" href="../mainCss/css/style.css">
+    <link rel="stylesheet" href="../mainCss/css/headerStyle.css">
+    <link rel="stylesheet" href="../mainCss/css/footerStyle.css">
+
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/CGA101G1/frontend/mainCss/images/logo.png">
+    <!-- Fonts CSS -->
+    <link rel="stylesheet" href="../mainCss/assets/vendor/fonts/fonts.css">
+    <!-- Bootstrap-icons CSS -->
+    <link rel="stylesheet" href="../mainCss/assets/vendor/bootstrap/icons/bootstrap-icons.css">
+    <!--Magnific-Popup CSS -->
+    <link rel="stylesheet" href="../mainCss/assets/vendor/magnific/magnific-popup.css">
+    <!-- Slick CSS -->
+    <link rel="stylesheet" href="../mainCss/assets/vendor/slick/slick.css">
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="../mainCss/assets/css/style01.css">
+</head>
+
+<body>
+
+    <!-- End Preload -->
+    <!-- header section starts-->
+
+    <header>
+
+        <div class="logo-div">
+            <img src="/CGA101G1/frontend/mainCss/images/logo.png" alt="">
+            <a href="/CGA101G1/frontend/HomePage/HomePage.html" class="logo">帕Game</a>
+        </div>
+
+
+        <nav class="navbar">
+            <!-- 上方標籤列 -->
+            <a class="active" href="/CGA101G1/frontend/HomePage/HomePage.html">首頁</a>
+            <a href="/CGA101G1/frontend/Product/HomePageinshop.html">商品區</a>
+            <!-- <a href="#news">遊戲新聞</a> -->
+            <a href="/CGA101G1/frontend/bid/listallbid.html">競標區</a>
+            <a href="/CGA101G1/frontend/forum/forumHomePage.jsp">討論區</a>
+        </nav>
+
+        <div class="icons">
+            <!--右上方小icon區-->
+            <i class="fas fa-bars" id="menu-bars"></i>
+            <a href="/CGA101G1/frontend/mem/updateMemberData.html" class="fas fa-solid fa-user-astronaut"
+                id="login-icon"></a>
+            <a href="/CGA101G1/frontend/Product/HomePageinProduct-wishlist.jsp" class="fas fa-heart"></a>
+            <a href="/CGA101G1/frontend/Product/shopping-cart.html" class="fas fa-shopping-cart" id="cart"></a>
+        </div>
+
+    </header>
+
+
+    <!-- header section ends-->
+
+
+
+    <!-- search form starts-->
+
+    <!-- search form ends-->
+
+    <!-- advanced search form starts -->
+
+
+    <!-- advanced search form ends -->
+
+    <!-- shopping-cart div starts -->
+    <!-- shopping-cart div ends -->
+    <!-- Header End -->
+    <!-- Main -->
+    <main>
+        <!-- Breadcrumb -->
+        <div class="py-3 bg-gray-100">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-6 my-2">
+                        <h1 class="m-0 h4 text-center text-lg-start">Shopping Cart</h1>
+                    </div>
+                    <div class="col-6 my-2">
+                        <ol class="breadcrumb dark-link m-0 small justify-content-center justify-content-lg-end">
+                            <li class="breadcrumb-item"><a class="text-nowrap" href="index.html"><i
+                                        class="bi bi-home"></i>Home</a></li>
+                            <li class="breadcrumb-item text-nowrap active" aria-current="page">Shopping Cart</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Breadcrumb -->
+        <!-- Cart Table -->
+        <div class="py-6" id="app">
+            <div class="container">
+                <!-- Cart Table -->
+                <div class="table-content table-responsive cart-table-content">
+                    <H2>購物車明細</H2>
+                    <table class="table table-bordered align-middle">
+                        <thead>
+                            <tr class="text-uppercase" style="font-size: large;">
+                                <th class="text-dark text-center fw-500 text-nowrap">遊戲名稱</th>
+                                <th class="text-dark text-center fw-500 text-nowrap">單價</th>
+                                <th class="text-dark text-center fw-500 text-nowrap">數量</th>
+                                <th class="text-dark text-center fw-500 text-nowrap">總金額</th>
+                                <th class="text-dark fw-500 text-center text-nowrap">移除購買項目</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="(item, index) in datastore" :key="index">
+                                <td class="text-center product-name"><a class="text-reset"
+                                        :href="`/CGA101G1/frontend/Product/HomePageinProduct.html?ProductNo=`+item.productNo">{{item.productName}}</a>
+                                </td>
+                                <td class="text-center product-price-cart"><span
+                                        class="amount">{{item.productTotalPrice/item.productSales}}</span></td>
+                                <td class="text-center product-quantity">
+                                    <div class="cart-qty d-inline-flex">
+                                        <a class="dec qty-btn"
+                                            :href="`/CGA101G1/product/shoppingCartReduce?ProductNo=${item.productNo}&ProductSales=1&ProductTotalPrice=${item.productTotalPrice/item.productSales}&ProductName=${item.productName}`">-</a>
+                                        <input class="cart-qty-input form-control" type="text" name="qtybutton"
+                                            :value="item.productSales">
+                                        <!-- 尚未測試++ -->
+                                        <a class="inc qty-btn"
+                                            :href="`/CGA101G1/product/shoppingCartModAdd?ProductNo=${item.productNo}&ProductSales=1&ProductTotalPrice=${item.productTotalPrice/item.productSales}&ProductName=${item.productName}`">+</a>
+                                    </div>
+                                </td>
+                                <td class="text-center product-subtotal">{{item.productTotalPrice}}</td>
+                                <td class="text-center text-nowrap">
+                                    <!-- <a href="javascript:void(0);"
+                                        class="btn btn-sm btn-outline-secondary text-nowrap px-3"><i
+                                            class="bi bi-pencil-square lh-1"></i> <span
+                                            class="d-none d-md-inline-block">Edit</span></a> -->
+                                    <a :href="`/CGA101G1/product/shoppingCartRemoveAll?ProductNo=${item.productNo}&ProductSales=1&ProductTotalPrice=${item.productTotalPrice/item.productSales}&ProductName=${item.productName}`"
+                                        class="btn btn-sm btn-outline-danger text-nowrap px-3"><i
+                                            class="bi bi-x lh-1"></i> <span class="d-md-inline-block">刪除</span></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Cart Table -->
+                <div v-if="(this.datastore.length == 0)">
+                    <div style="font-size:large; text-align:center">
+                        <i class="fas fa-shopping-cart"></i> 目前購物車中還沒有東西唷~<i class="fas fa-shopping-cart"></i>
+                    </div>
+
+                </div>
+                <div class="d-flex">
+                    <div>
+                        <a class="btn btn-outline-dark" href="/CGA101G1/frontend/Product/HomePageinshop.html">
+                            <i class="ci-arrow-left mt-sm-0 me-1"></i>
+                            <span class="d-none d-sm-inline">繼續購物</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="row flex-row-reverse pt-4">
+
+                </div>
+                <div v-if="(this.datastore.length != 0)">
+                    <form class="card mt-5" action="/CGA101G1/order/addtoOrderAndOrderlist" method="post">
+                        <div class="card-header py-3">
+                            <h4 class="m-0">請填寫訂購資料</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="row g-3">
+                                <div class="col-sm-6">
+                                    <label class="form-label" style="font-size: 1.5em;" for="ReceiverName">收件人姓名</label>
+                                    <input class="form-control" type="text" id="ReceiverName" required
+                                        name="ReceiverName" @change="nameCheck($event)" v-model="memInfo.memName">
+                                    <div style="color: red;" :style="{visibility: nameInput ? 'visible' : 'hidden'}">
+                                        請輸入正確格式的名字，不應包含特殊符號、數字或是只填空格!!</div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label class="form-label" for="ReceiverPhone" style="font-size: 1.5em;">聯絡手機</label>
+                                    <input class="form-control" type="number" id="ReceiverPhone" required
+                                        name="ReceiverPhone" @change="phoneCheck($event)" v-model="memInfo.memMobile">
+                                    <div style="color: red;" :style="{visibility: phoneInput ? 'visible' : 'hidden'}">
+                                        請輸入正確的手機格式!!</div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label class="form-label" for="Rod" style="font-size: 1.5em;">地址</label>
+                                    <input class="js-demeter-tw-zipcode-selector form-control" data-city="#city4"
+                                        data-dist="#dist4" placeholder="請輸入郵遞區號" v-model="postNo" hidden>
+                                    <select id="city4" placeholder="請選擇縣市" class="form-select" name="city" required>
+                                    </select>
+                                    <select id="dist4" placeholder="請選擇鄉鎮區" class="form-select" name="dist"
+                                        required></select>
+                                    <input class="form-control" type="text" id="Rod" required name="Rod"
+                                        v-model="memInfo.Add" @change="RodInputCheck($event)">
+                                    <div style="color: red;" :style="{visibility: RodInput ? 'visible' : 'hidden'}">
+                                        請輸入正確格式的地址，不應包含特殊符號及英文或是只填空格!!</div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label class="form-label" for="PickupMethod" style="font-size: 1.5em;">取貨方式</label>
+                                    <select class="form-select" id="PickupMethod" required name="PickupMethod"
+                                        @change="feeCheck($event)">
+                                        <option value="0">宅配</option>
+                                        <option value="1">超商取貨</option>
+                                    </select>
+                                    <label class="form-label" for="shippingFee" style="font-size: 1.5em;">運費</label>
+                                    <select class="form-select" id="shippingFee" disabled name="shippingFee"
+                                        :value="shippingFeeCal">
+                                        <option value="0">宅配運費:100元</option>
+                                        <option value="1">超商取貨運費:60元</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label class="form-label" for="payMethod" style="font-size: 1.5em;">付款方式</label>
+                                    <select class="form-select" id="payMethod" required name="payMethod">
+                                        <option value="0">信用卡</option>
+                                        <option value="1">超商取貨付款</option>
+                                        <option value="2">匯款</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 col-lg-8" style="width: 50%;">
+                                    <!-- <div class="card"> -->
+                                    <!-- <div class="card-header bg-transparent py-3" style="padding-bottom:0;">
+                                            <h3>使用優惠券</h3>
+                                        </div> -->
+                                    <!-- <div class="card-body ">
+                                        <div class="form-group mb-3"> -->
+                                    <label class="form-label" style="font-size: 1.5em;">我的優惠券清單</label>
+                                    <select class="form-select" id="MemCouponNo" required @change="getCoup($event)">
+                                        <option value="0">不使用優惠券</option>
+                                        <option v-for="(item, index) in coupons" :key="index"
+                                            :value="item.discountPrice+a+item.couponTypeNo">
+                                            優惠券編號：{{item.couponTypeNo}}：優惠金額-{{item.discountPrice}}</option>
+                                    </select>
+                                    <input :value="memCouponNo" name="MemCouponNo" hidden>
+                                    <input :value="selectCouponNo" name="couponTypeNo" hidden>
+                                    <!-- </div>
+                                    </div> -->
+                                    <!-- </div> -->
+                                </div>
+                                <div class="col-sm-6" style="width: 49%;">
+                                    <div class="card">
+                                        <div class="card-header bg-transparent py-3">
+                                            <h6 class="m-0 mb-1" style="font-size: 1.8em;">本次訂單</h6>
+                                        </div>
+                                        <!-- 結帳 -->
+                                        <div class="card-body ">
+                                            <ul class="list-unstyled">
+                                                <li class="d-flex justify-content-between align-items-center mb-2">
+                                                    <h6 class="me-2 text-body">原價</h6><span
+                                                        class="text-end">{{totalPrice}}</span>
+                                                </li>
+                                                <li class="d-flex justify-content-between align-items-center mb-2">
+                                                    <h6 class="me-2 text-body">優惠券折抵金額</h6><span
+                                                        class="text-end">-{{this.selectCoupon}}</span>
+                                                </li>
+                                                <li class="d-flex justify-content-between align-items-center mb-2">
+                                                    <h6 class="me-2 text-body">運費</h6><span
+                                                        class="text-end">+{{this.shipFeeConfirm}}</span>
+                                                </li>
+                                                <li
+                                                    class="d-flex justify-content-between align-items-center border-top pt-3 mt-3">
+                                                    <h6 class="me-2" style="font-size: 1.8em;">最後所需支付總價： <input
+                                                            type="text" :value="totalPrice-selectCoupon+shipFeeConfirm"
+                                                            name="OrderTotalPrice"></h6>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <input type="submit" value="送出訂單" class="btn btn-primary" v-show="ckeckoutOK"
+                                        @click="return foo();">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div v-if="loading"
+                    style="position:fixed;left: 40%; top: 40%;background-color: rgb(87, 98, 107); width: 20%;">
+                    <div style="margin-left: 35%; margin-top: 5%">
+                        <h3 style="color: white;">成立訂單中....</h3>
+                    </div>
+
+                    <div class="spinner-border text-info" style="margin-left: 45%; margin-top: 2%" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Cart Table -->
+    </main>
+    <!-- End Main -->
+    <!-- footer section starts -->
+
+    <footer class="bg-white footer">
+        <div class="footer-top py-6">
+            <div class="container">
+                <div class="row">
+                    <section class="footer">
+                        <div class="box-container">
+                            <div class="box">
+                                <h3>會員專區</h3>
+                                <a href="#">會員登入</a>
+                                <a href="#">會員註冊</a>
+                                <a href="#">訂單管理</a>
+                                <a href="#">二手遊戲申請上架單管理</a>
+                            </div>
+
+                            <div class="box">
+                                <h3>快速連結</h3>
+                                <a href="#">首頁</a>
+                                <a href="#">遊戲商城</a>
+                                <a href="#">二手競標商城</a>
+                                <a href="#">遊戲討論區</a>
+                            </div>
+
+                            <div class="box">
+                                <h3>聯絡我們</h3>
+                                <a href="#">02-3456-7890</a>
+                                <a href="#">03-1111-2222</a>
+                                <a href="#">CGA101G1@gmail.com</a>
+                                <a href="#">anasbhai@gmail.com</a>
+                            </div>
+
+                            <div class="box">
+                                <h3>關於我們</h3>
+                                <a href="#">管理團隊</a>
+                                <a href="#">創始理念</a>
+                                <a href="#">insuagram</a>
+                                <a href="#">linkedin</a>
+                            </div>
+                        </div>
+
+                        <div class="credit">copyright@2022 by <span>CGA101G1</span></div>
+
+                    </section>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+    <!-- footer section ends -->
+    <!-- jquery -->
+    <script src="../mainCss/assets/js/jquery-3.5.1.min.js"></script>
+    <!-- appear -->
+    <script src="../mainCss/assets/vendor/appear/jquery.appear.js"></script>
+    <!--bootstrap-->
+    <script src="../mainCss/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- owl-carousel -->
+    <script src="../mainCss/assets/vendor/slick/slick.min.js"></script>
+    <!-- magnific -->
+    <script src="../mainCss/assets/vendor/magnific/jquery.magnific-popup.min.js"></script>
+    <!-- isotope -->
+    <script src="../mainCss/assets/vendor/isotope/isotope.pkgd.min.js"></script>
+    <!-- count-down -->
+    <script src="../mainCss/assets/vendor/count-down/jquery.countdown.min.js"></script>
+    <!-- Theme Js -->
+    <script src="../mainCss/assets/js/custom.js"></script>
+</body>
+<!-- end body -->
+
+<script>
+    //custom select box
+
+    // $(function () {
+    //     $('select.styled').customSelect();
+    // });
+
+    const App = {
+        data() {
+            return {
+                datastore: [],
+                totalPrice: 0,
+                coupons: [],
+                memInfo: [],
+                postData: [],
+                selectCoupon: 0,
+                selectCouponNo: '',
+                memCouponNo: 0,
+                postNo: 0,
+                form: false,
+                loading: false,
+                a: ",",
+                //表單驗證用
+                nameInput: false,
+                nameCheckN: 0,
+                RodInput: false,
+                RodCheckN: 0,
+                phoneInput: false,
+                phoneCheckN: 0,
+                shippingFeeCal: 0,
+                shipFeeConfirm: 100,
+                ckeckoutOK: true,
+                ckeckoutNumber: 0,
+
+            }
+        },
+        methods: {
+            getProductData() {
+                const apiUrl = '/CGA101G1/product/showCart';
+                axios.get(apiUrl)
+                    // 一定要用箭頭函示!!!!
+                    .then((response) => {
+                        console.log("取ProductData的狀態：" + response.status); //狀態碼
+                        this.datastore = response.data;//塞進去
+                        console.log("datastore讀取資料ok");
+                        this.datastore.forEach(element => {
+                            this.totalPrice += element.productTotalPrice;
+                        });
+                        if (this.datastore.length == 0) {
+                            this.ckeckoutOK = false;
+                        }
+                    });
+            },
+            getMemData() {
+                const apiUrl = '/CGA101G1/product/showShoppingMemInfo';
+                this.getPostData();
+                axios.get(apiUrl)
+                    // 一定要用箭頭函示!!!!
+                    .then((response) => {
+                        console.log("取memInfo的狀態：" + response.status); //狀態碼
+                        this.memInfo = response.data;//塞進去
+                        if (this.memInfo.Dist == '') {
+                            this.ckeckoutOK = false;
+                        }
+                        console.log("memInfo讀取資料ok");
+                        for (i = 0; i < this.postData.length; i++) {
+                            if ((this.postData[i].city_name === this.memInfo.City) && (this.postData[i].name === this.memInfo.Dist)) {
+                                this.postNo = this.postData[i].zipcode;
+                                console.log(this.postData[i].zipcode);
+                            }
+                        }
+                    });
+            },
+            getPostData() {
+                const apiUrl = 'https://demeter.5fpro.com/tw/zipcodes.json';
+                axios.get(apiUrl)
+                    // 一定要用箭頭函示!!!!
+                    .then((response) => {
+                        this.postData = response.data;//塞進去
+                    });
+            },
+            showForm() {
+                this.form = true;
+            },
+            getMemCoupons() {
+                const apiUrl = '/CGA101G1/order/showMemAllC';
+                axios.get(apiUrl)
+                    // 一定要用箭頭函示!!!!
+                    .then((response) => {
+                        console.log("取ProductData的狀態：" + response.status); //狀態碼
+
+                        this.coupons = response.data;//塞進去
+                        console.log("coupons讀取資料ok");
+                    });
+            },
+            getCoup(e) {
+                this.memCouponNo = 0;
+                console.log(e.target.value);
+                this.selectCoupon = e.target.value.split(',')[0];
+                this.selectCouponNo = e.target.value.split(',')[1];
+                for (i = 0; i < this.coupons.length; i++) {
+                    if (this.coupons[i].couponTypeNo == (parseInt(this.selectCouponNo))) {
+                        this.memCouponNo = this.coupons[i].memCouponNo;
+                        this.selectCouponNo = this.this.coupons[i].couponTypeNo;
+                    }
+                }
+            },
+            nameCheck(e) {
+                this.ckeckoutOK = false;
+                this.nameCheckN = 0;
+                this.nameInput = false;
+                const rules = new RegExp('[+-/^~{}:@$!%*?&0-9]')
+
+                if (rules.test(e.target.value) || (e.target.value).trim().length == 0) {
+                    this.nameInput = true;
+                } else if (this.nameInput + this.phoneInput + this.RodInput == 0) {
+                    // this.nameCheckN = 1;
+                    // if (this.nameCheckN + this.RodCheckN + this.phoneCheckN == 3) {
+                    this.ckeckoutOK = true;
+                    // }
+                }
+            },
+            phoneCheck(e) {
+                this.ckeckoutOK = false;
+                this.phoneCheckN = 0;
+                this.phoneInput = false;
+                const rules = /^09\d{8}$/;
+                if (!rules.test(e.target.value) || (e.target.value).trim().length == 0) {
+                    this.phoneInput = true;
+                } else if (this.nameInput + this.phoneInput + this.RodInput == 0) {
+                    // this.phoneCheckN = 1;
+                    // if (this.nameCheckN + this.RodCheckN + this.phoneCheckN == 3) {
+                    this.ckeckoutOK = true;
+                    // }
+                }
+            },
+            RodInputCheck(e) {
+                this.ckeckoutOK = false;
+                this.RodCheckN = 0;
+                this.RodInput = false;
+                const rules = new RegExp('[+-/^~{}:@$!%*?&a-zA-Z]')
+                if (rules.test(e.target.value) || (e.target.value).trim().length == 0) {
+                    this.RodInput = true;
+                } else if (this.nameInput + this.phoneInput + this.RodInput == 0) {
+                    // this.RodCheckN = 1;
+                    // if (this.nameCheckN + this.RodCheckN + this.phoneCheckN == 3) {
+                    this.ckeckoutOK = true;
+                    // }
+                }
+            },
+            feeCheck(e) {
+
+                if (e.target.value == 1) {
+                    this.shippingFeeCal = 1;
+                    this.shipFeeConfirm = 60;
+
+                } else if (e.target.value == 0) {
+                    this.shippingFeeCal = 0;
+                    this.shipFeeConfirm = 100;
+
+                }
+            },
+            foo() {
+                this.loading = true;
+                return true;
+            }
+
+
+
+        },
+        created() {
+            this.getProductData();
+            this.getMemCoupons();
+            this.getMemData();
+            //想辦法取優惠券編號跟折扣金額
+        },
+
+    };
+
+    Vue.createApp(App).mount('#app');
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

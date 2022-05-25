@@ -1,0 +1,291 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POP.Game</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+    <!-- font awesome cdn link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- custom css file link -->
+    <link rel="stylesheet" href=".\\css\\allStyle.css">
+    <link rel="stylesheet" href=".\\css\\style.css">
+    <link rel="stylesheet" href=".\\css\\headerStyle.css">
+    <link rel="stylesheet" href=".\\css\\footerStyle.css">
+    <link rel="stylesheet" href=".\\css\\headerFunctionStyle.css">
+    <script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.js"></script>
+</head>
+
+<body>
+
+    <!-- header section starts-->
+
+    <header>
+
+        <div class="logo-div">
+            <img src=".\\images\\logo.png" alt=""> <a href="/CGA101G1/frontend/HomePage/HomePage.html" class="logo">帕Game</a>
+        </div>
+
+
+        <nav class="navbar">
+            <!-- 上方標籤列 -->
+            <a class="active" href="/CGA101G1/frontend/HomePage/HomePage.html">首頁</a>
+             <a href="/CGA101G1/frontend/Product/HomePageinshop.html">商品區</a>
+            <!-- <a href="#news">遊戲新聞</a> -->
+            <a href="/CGA101G1/frontend/bid/listallbid.html">競標區</a> 
+            <a href="/CGA101G1/frontend/forum/forumHomePage.jsp">討論區</a>
+        </nav>
+
+        <div class="icons">
+            <!--右上方小icon區-->
+            <i class="fas fa-bars" id="menu-bars"></i> <a href="/CGA101G1/frontend/mem/updateMemberData.html" class="fas fa-solid fa-user-astronaut" id="login-icon"></a>
+              <a href="/CGA101G1/frontend/Product/HomePageinProduct-wishlist.jsp" class="fas fa-heart"></a> 
+<!--               <a href="/CGA101G1/frontend/Product/shopping-cart.html" class="fas fa-shopping-cart" id="cart"></a> -->
+        	<i class="fas fa-shopping-cart" id="cart"></i>
+        </div>
+
+    </header>
+
+    <!-- header section ends-->
+
+    <!-- Robot div starts -->
+
+
+    <div id="robot">
+        <img src=".\\images\\robot_hover.png">
+    </div>
+
+    <div id="service">
+        <div class="title">
+            <span>帕Game智能客服</span>
+        </div>
+       	<div class="marquee">
+        		<div class="marquee-text"><img src="./images/astronaut123.png">連線中......</div>
+        </div>
+        <div class="content">
+      
+<!-- 		<div class="img-messageLine"> -->
+<!-- 			<img src="./images/dokidoki.jpg"> -->
+<!-- 		</div> -->
+	       
+        </div>
+        
+		<div class="OneMessage">
+			<i class="fa-solid fa-user-astronaut"></i> <span>Hello, Are you here ?</span>
+		</div>
+             
+		<div class="OneService">
+			<span>Don't worry! I'm here!</span> <img src=".\\images\\robot_hover.png">
+		</div>
+        <div class="mailForm">
+
+            <div>
+                <i class="fas fa-solid fa-at"></i>
+                <input type="email" id="from" placeholder="您的聯絡信箱">
+            </div>
+            <div>
+                <i class="fa-regular fa-envelope"></i>
+                <input type="text" id="title" placeholder="信件標題">
+            </div>
+            <div>
+                <i class="fas fa-regular fa-pencil"></i>
+                <textarea name="" id="content" cols="30" rows="10" placeholder="請將問題告訴我們!"></textarea>
+            </div>
+            <button id="mailFormBtn">
+                <i class="fas fa-regular fa-rocket" ></i>送出
+            </button>
+
+        </div>
+
+		<div class="callService">
+			<div><label>線上客服人員</label></div>
+			<div>
+				<div>
+					<div class="phone-container"><i class="fa-solid fa-phone-volume"></i></div>
+					<span>接聽</span>
+				</div>
+					
+				<div>
+					<div class="phone-container"><i class="fa-solid fa-phone-slash"></i></div>				
+					<span>拒絕</span>
+				</div>
+			</div>	
+		</div>
+
+
+
+        <ul class="service-form">
+            <li value="訂單問題">訂單問題<br> <i class="fa-solid fa-file-invoice-dollar"></i>
+            </li>
+            <li value="商品問題">商品問題<br> <i class="fas fa-solid fa-gamepad"></i>
+            </li>
+            <li value="帳號問題">帳號問題<br> <i class="fas fa-solid fa-user-astronaut"></i>
+            </li>
+            <li value="討論區問題">討論區問題<br> <i class="fas fa-solid fa-chalkboard-user"></i>
+            </li>
+            <li value="聊天室問題">聊天室問題<br> <i class="fas fa-solid fa-comment-dots"></i>
+            </li>
+            <li id="emailQ">表單回報<br> <i class="fas fa-solid fa-scroll"></i>
+            </li>
+
+
+        </ul>
+
+
+        <div class="chat">
+            <!-- <i class="fas fa-solid fa-xmark"></i> -->
+            <i class="fas fa-bars" id="service-menu"></i> <input type="text">
+            <i class="fas fa-solid fa-image"><input type="file" onchange="chooseFile()"></i> <i class="fas fa-solid fa-paper-plane" id="send"></i>
+        </div>
+
+
+    </div>
+
+    <!-- Robot div ends -->
+
+
+    <!-- shopping-cart div starts -->
+
+    <div id="shopping-cart">
+		<div class="box-group">
+        
+        </div>
+        <div class="total"></div>
+        <a href="/CGA101G1/frontend/Product/shopping-cart.html" class="btn">check out</a>
+
+    </div>
+
+    <!-- shopping-cart div ends -->
+
+    <!-- home section starts-->
+
+    <section class="home" id="home">
+
+        <!-- <h1 class="title"> 熱銷排行榜 </h1> -->
+        <div class="swiper home-slider">
+
+            <div class="swiper-wrapper wrapper">
+
+                
+
+            </div>
+
+            <div class="swiper-pagination"></div>
+        </div>
+
+        <div class="items" id="items">
+
+            <div class="box-container">
+            
+
+            </div>
+
+
+        </div>
+    </section>
+    <!-- home section ends-->
+
+    <!-- items section starts -->
+
+
+    <!-- items section ends -->
+
+    <!-- News section starts -->
+
+
+    <section class="news" id="news">
+
+        <h1 class="heading_News">遊戲新聞</h1>
+
+        <div class="swiper news-slider">
+            <nav class="news-type">
+                <ul>
+                    <li value="64004">PC</li>
+                    <li value="64002">PS5</li>
+                    <li value="64003">Xbox</li>
+                    <li value="64001">Switch</li>
+                    <li class="moving-bar"></li>
+                </ul>
+            </nav>
+            <div class="swiper-wrapper wrapper" id="slide-container"></div>
+
+            <div class="swiper-pagination"></div>
+        </div>
+
+
+    </section>
+    <!-- News section ends -->
+
+
+    <!-- footer section starts -->
+
+    <section class="footer" id="footer">
+
+        <div class="box-container">
+
+          <div class="box">
+                                <h3>會員專區</h3>
+                                <a href="#">會員登入</a>
+                                <a href="#">會員註冊</a>
+                                <a href="#">訂單管理</a>
+                                <a href="#">二手遊戲申請上架單管理</a>
+                            </div>
+                
+                            <div class="box">
+                                <h3>快速連結</h3>
+                                <a href="#">首頁</a>
+                                <a href="#">遊戲商城</a>
+                                <a href="#">二手競標商城</a>
+                                <a href="#">遊戲討論區</a>
+                            </div>
+                
+                            <div class="box">
+                                <h3>聯絡我們</h3>
+                                <a href="#">02-3456-7890</a>
+                                <a href="#">03-1111-2222</a>
+                                <a href="#">CGA101G1@gmail.com</a>
+                                <a href="#">anasbhai@gmail.com</a>
+                            </div>
+                
+                            <div class="box">
+                                <h3>關於我們</h3>
+                                <a href="#">管理團隊</a>
+                                <a href="#">創始理念</a>
+                                <a href="#">insuagram</a>
+                                <a href="#">linkedin</a>
+                            </div>
+        </div>
+
+        <div class="credit">
+            copyright@2021 by <span>CGA101G1</span>
+        </div>
+
+    </section>
+
+
+    <!-- footer section ends -->
+
+    <!-- loader part -->
+<!--     <div class="loader-container"> -->
+<!--         <div class="loading-hint"> -->
+<!--             <span>已載入</span> <span id="num">0</span> <span>%</span> -->
+<!--         </div> -->
+
+<!--         <img src=".\\images\\alienn.png" alt=""> -->
+
+<!--     </div> -->
+
+
+
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+
+    <!-- custom js file link-->
+    <script src=".\\js\\HeaderJS.js"></script>
+    <script src=".\\js\\script.js"></script>
+    <script src=".\\js\\ServiceScript.js"></script>
+</body>
+
+</html>
